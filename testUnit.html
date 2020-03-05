@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="binaryTree.js"></script>
+        <script src="calcStats.js"></script>
+    </head>
+    <body>
+        <div>
+            <p id="sum">Sum of the tree is: </p>
+            <p id="avg">Average of the tree is: </p>
+            <p id="median">Median of the tree is: </p>
+
+
+            <script>
+                // Creating example tree
+                //            5
+                //           / \
+                //          3   7
+                //         / \ / \
+                //        2  5 1  0
+                //               / \
+                //              2   8
+                //                   \
+                //                    5
+                var tree = new BinaryTree();
+                var tmpNode;
+                tree.addAtRight(5, null);
+                tmpNode = tree.addAtLeft(3, tree.root);
+                tree.addAtLeft(2, tmpNode);
+                tree.addAtRight(5, tmpNode);
+                tmpNode = tree.addAtRight(7, tree.root);
+                tree.addAtLeft(1, tmpNode);
+                tmpNode = tree.addAtRight(0, tmpNode);
+                tree.addAtLeft(2, tmpNode);
+                tmpNode = tree.addAtRight(8, tmpNode);
+                tree.addAtRight(5, tmpNode);
+
+                // Writing results in <p> elements
+                var stats = new CalcStats();
+                document.getElementById("sum").innerHTML += stats.calcSum(tree.root);
+                document.getElementById("avg").innerHTML += stats.calcAvg(tree.root);
+                document.getElementById("median").innerHTML += stats.calcMedian(tree.root);
+            </script>
+        </div>
+    </body>
+</html>
